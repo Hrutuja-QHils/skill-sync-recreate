@@ -1,78 +1,88 @@
-
 import { useState } from 'react';
 import { Search, MapPin, Building2, Users, TrendingUp, Star, ArrowRight, Briefcase, Clock, DollarSign } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [location, setLocation] = useState('');
-
-  const featuredJobs = [
-    {
-      id: 1,
-      title: 'Senior Frontend Developer',
-      company: 'TechCorp',
-      location: 'San Francisco, CA',
-      salary: '$120k - $150k',
-      type: 'Full-time',
-      posted: '2 days ago',
-      skills: ['React', 'TypeScript', 'Node.js'],
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Product Manager',
-      company: 'InnovateLab',
-      location: 'New York, NY',
-      salary: '$100k - $130k',
-      type: 'Full-time',
-      posted: '1 day ago',
-      skills: ['Product Strategy', 'Analytics', 'Agile'],
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'UX Designer',
-      company: 'DesignStudio',
-      location: 'Remote',
-      salary: '$80k - $100k',
-      type: 'Full-time',
-      posted: '3 days ago',
-      skills: ['Figma', 'User Research', 'Prototyping'],
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'Data Scientist',
-      company: 'DataTech',
-      location: 'Seattle, WA',
-      salary: '$110k - $140k',
-      type: 'Full-time',
-      posted: '1 day ago',
-      skills: ['Python', 'Machine Learning', 'SQL'],
-      featured: false
-    }
-  ];
-
-  const companies = [
-    { name: 'TechCorp', logo: '🚀', jobs: 12 },
-    { name: 'InnovateLab', logo: '💡', jobs: 8 },
-    { name: 'DesignStudio', logo: '🎨', jobs: 5 },
-    { name: 'DataTech', logo: '📊', jobs: 15 }
-  ];
-
-  const stats = [
-    { label: 'Active Jobs', value: '2,500+', icon: Briefcase },
-    { label: 'Companies', value: '500+', icon: Building2 },
-    { label: 'Candidates', value: '10k+', icon: Users },
-    { label: 'Success Rate', value: '92%', icon: TrendingUp }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+  const featuredJobs = [{
+    id: 1,
+    title: 'Senior Frontend Developer',
+    company: 'TechCorp',
+    location: 'San Francisco, CA',
+    salary: '$120k - $150k',
+    type: 'Full-time',
+    posted: '2 days ago',
+    skills: ['React', 'TypeScript', 'Node.js'],
+    featured: true
+  }, {
+    id: 2,
+    title: 'Product Manager',
+    company: 'InnovateLab',
+    location: 'New York, NY',
+    salary: '$100k - $130k',
+    type: 'Full-time',
+    posted: '1 day ago',
+    skills: ['Product Strategy', 'Analytics', 'Agile'],
+    featured: true
+  }, {
+    id: 3,
+    title: 'UX Designer',
+    company: 'DesignStudio',
+    location: 'Remote',
+    salary: '$80k - $100k',
+    type: 'Full-time',
+    posted: '3 days ago',
+    skills: ['Figma', 'User Research', 'Prototyping'],
+    featured: false
+  }, {
+    id: 4,
+    title: 'Data Scientist',
+    company: 'DataTech',
+    location: 'Seattle, WA',
+    salary: '$110k - $140k',
+    type: 'Full-time',
+    posted: '1 day ago',
+    skills: ['Python', 'Machine Learning', 'SQL'],
+    featured: false
+  }];
+  const companies = [{
+    name: 'TechCorp',
+    logo: '🚀',
+    jobs: 12
+  }, {
+    name: 'InnovateLab',
+    logo: '💡',
+    jobs: 8
+  }, {
+    name: 'DesignStudio',
+    logo: '🎨',
+    jobs: 5
+  }, {
+    name: 'DataTech',
+    logo: '📊',
+    jobs: 15
+  }];
+  const stats = [{
+    label: 'Active Jobs',
+    value: '2,500+',
+    icon: Briefcase
+  }, {
+    label: 'Companies',
+    value: '500+',
+    icon: Building2
+  }, {
+    label: 'Candidates',
+    value: '10k+',
+    icon: Users
+  }, {
+    label: 'Success Rate',
+    value: '92%',
+    icon: TrendingUp
+  }];
+  return <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -116,44 +126,18 @@ const Index = () => {
           
           {/* Search Bar */}
           <div className="max-w-4xl mx-auto mb-12">
-            <Card className="p-6 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                  <Input
-                    placeholder="Job title, keywords, or company"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 h-12 text-lg border-0 bg-gray-50"
-                  />
-                </div>
-                <div className="flex-1 relative">
-                  <MapPin className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                  <Input
-                    placeholder="Location"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    className="pl-10 h-12 text-lg border-0 bg-gray-50"
-                  />
-                </div>
-                <Button size="lg" className="h-12 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                  Search Jobs
-                </Button>
-              </div>
-            </Card>
+            
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-20">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+            {stats.map((stat, index) => <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <stat.icon className="h-8 w-8 text-blue-600" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
                 <div className="text-gray-600">{stat.label}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -167,18 +151,15 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {featuredJobs.map((job) => (
-              <Card key={job.id} className="hover:shadow-xl transition-all duration-300 border-0 shadow-md group cursor-pointer">
+            {featuredJobs.map(job => <Card key={job.id} className="hover:shadow-xl transition-all duration-300 border-0 shadow-md group cursor-pointer">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        {job.featured && (
-                          <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white">
+                        {job.featured && <Badge className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white">
                             <Star className="h-3 w-3 mr-1" />
                             Featured
-                          </Badge>
-                        )}
+                          </Badge>}
                         <Badge variant="outline">{job.type}</Badge>
                       </div>
                       <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
@@ -208,11 +189,9 @@ const Index = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-2">
-                        {job.skills.slice(0, 3).map((skill) => (
-                          <Badge key={skill} variant="secondary" className="text-xs">
+                        {job.skills.slice(0, 3).map(skill => <Badge key={skill} variant="secondary" className="text-xs">
                             {skill}
-                          </Badge>
-                        ))}
+                          </Badge>)}
                       </div>
                       <div className="flex items-center text-xs text-gray-500">
                         <Clock className="h-3 w-3 mr-1" />
@@ -221,8 +200,7 @@ const Index = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
           
           <div className="text-center mt-12">
@@ -243,13 +221,11 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {companies.map((company, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer border-0 bg-white/80 backdrop-blur-sm">
+            {companies.map((company, index) => <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer border-0 bg-white/80 backdrop-blur-sm">
                 <div className="text-4xl mb-4">{company.logo}</div>
                 <h3 className="font-semibold text-gray-900 mb-2">{company.name}</h3>
                 <p className="text-sm text-gray-600">{company.jobs} open positions</p>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -320,8 +296,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
